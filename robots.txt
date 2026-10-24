@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /assets/video/
-
-Sitemap: https://VOTRE-DOMAINE.com/sitemap.xml
