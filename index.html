@@ -146,7 +146,7 @@ body.ho .col,body.ho .mq div{animation-play-state:paused!important}
  .rv{transform:none;transition:opacity .5s ease}
 }
 @media(max-width:760px){
- .tc{display:none}
+ .tc{top:78px;right:16px;font-size:.62rem;letter-spacing:.06em;text-shadow:0 1px 8px rgba(0,0,0,.6)}
  #hero .wrap{padding:92px 0 26px}
  #hero .ey{font-size:.64rem;letter-spacing:.14em;margin-bottom:12px;white-space:nowrap}#hero .ey:before{display:none}
  #hero h1{font-size:clamp(1.9rem,9vw,2.6rem);max-width:100%}
@@ -157,6 +157,15 @@ body.ho .col,body.ho .mq div{animation-play-state:paused!important}
  .col:nth-child(n+3){display:none}.col video{display:none}
  .col{animation-duration:calc(var(--t)*1.6)}
 }
+/* ===== Accueil fixe (parallaxe) + vignettes allégées ===== */
+#hero{position:sticky;top:0;z-index:0}
+main>section:not(#hero),#portfolio{position:relative;z-index:1}
+:where(main>section:not(#hero)){background-color:var(--ink)}
+#portfolio{background:var(--ink)}
+footer{position:relative;z-index:1}
+#hero .wrap{transform:translate3d(0,calc(var(--hp,0)*-8vh),0);opacity:calc(1 - var(--hp,0)*.9);will-change:transform,opacity}
+.sc{box-shadow:0 16px 28px -16px rgba(0,0,0,.65);transition:transform .9s var(--ez),opacity .6s,visibility 0s}
+.sc.h{visibility:hidden;transition:transform .9s var(--ez),opacity .6s,visibility 0s linear .9s}
 </style>
 </head>
 <body>
@@ -296,14 +305,12 @@ $('#cols').innerHTML=[0,1,2,3,4].map(c=>{const h=HERO.filter((_,i)=>i%5===c).map
 $('#mq').innerHTML=(MARQUEE.map(m=>`<span>${m}</span>`).join('')).repeat(4);
 if(!RM){addEventListener('load',()=>document.querySelectorAll('.col video').forEach(v=>{const c=navigator.connection;if(innerWidth<760||(c&&(c.saveData||/2g/.test(c.effectiveType))))return;v.src=v.dataset.s;v.play().catch(()=>{})}));
  const t0=Date.now(),tc=$('#tc'),p=n=>String(n).padStart(2,'0');setInterval(()=>{const t=Date.now()-t0,f=Math.floor(t%1000/40);tc.textContent='REC '+p(Math.floor(t/36e5))+':'+p(Math.floor(t/6e4)%60)+':'+p(Math.floor(t/1e3)%60)+':'+p(f)},80)}
-// Accueil : le collage se fige dès qu'il n'est plus à l'écran (navigation plus fluide)
-new IntersectionObserver(e=>{const off=!e[0].isIntersecting;document.body.classList.toggle('ho',off);document.querySelectorAll('.col video').forEach(v=>{if(off)v.pause();else if(!cur&&v.src)v.play().catch(()=>{})})}).observe($('#hero'));
 // Savoir-faire
 $('#sf').innerHTML=DOMAINS.map((d,k)=>`<a class="row rv" href="#dom-${d.id}"><b>0${k+1}</b><h3>${d.t}</h3><span>${d.line}</span><i>→</i></a>`).join('');
 // Domaines : pile de cartes superposées
 const box=$('#doms');
 DOMAINS.forEach((d,k)=>{
- const L2=d.items.filter(i=>i.type!=='link'),step=Math.max(1,Math.floor(L2.length/6)),S=L2.filter((_,i)=>i%step===0).slice(0,6),n=S.length;
+ const L2=d.items.filter(i=>i.type!=='link'),step=Math.max(1,Math.floor(L2.length/5)),S=L2.filter((_,i)=>i%step===0).slice(0,5),n=S.length;
  const s=E('section','dom');s.id='dom-'+d.id;s.style.setProperty('--c',d.c);
  s.innerHTML=`<div class="rain" data-n="2" data-c="${d.c},#f6efe4"></div><div class="wrap dm"><div class="tx rv"><span class="num">0${k+1}</span><h2>${d.t}</h2><p>${d.line}</p><button class="btn p">Voir les créations (${L2.length})</button></div>
  <div class="stack vf rv" role="button" tabindex="0" aria-label="Ouvrir les créations : ${d.t}">${S.map(it=>`<span class="sc"><img src="${thumb(it)}" alt="" loading="lazy" decoding="async"${it.type==='mp4'?` data-v="${V+it.src}.mp4" onerror="vf(this)"`:''}>${it.type==='img'?'':'<i class="pl"></i>'}<b>${it.title}</b></span>`).join('')}<span class="hint">Touchez pour voir nos créations</span></div></div>`;
@@ -313,7 +320,7 @@ DOMAINS.forEach((d,k)=>{
  st.onclick=op;st.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();op(e)}};$('.btn',s).onclick=op;
  st.onmouseenter=()=>hov=1;st.onmouseleave=()=>hov=0;
  new IntersectionObserver(e=>{vis=e[0].isIntersecting;if(vis&&!hlsReq&&!document.createElement('video').canPlayType('application/vnd.apple.mpegurl')){hlsReq=1;loadHls(()=>{})}}).observe(st);
- if(!RM&&n>1)setInterval(()=>{if(vis&&!hov&&!cur){top=(top+1)%n;lay()}},3200);
+ if(!RM&&n>1)setInterval(()=>{if(vis&&!hov&&!cur&&Date.now()-lastScroll>600){top=(top+1)%n;lay()}},4200);
  box.append(s)});
 // Pluie d'éléments (cinéma, son, joie) : icônes SVG qui tombent doucement
 const IC=['play','cam','mic','clap','note','headphones','wave','photo','pixel','image','pen','chat','frame','spark','star','heart'],FL=['play','star','heart','spark','pixel'],rn=[...document.querySelectorAll('.rain')];
@@ -326,10 +333,12 @@ sizeRain();addEventListener('resize',sizeRain);
 // Apparition au défilement, barre de progression, mots de l'engagement
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.rv').forEach(e=>io.observe(e));
 const eq=$('#engq');eq.innerHTML=eq.textContent.split(' ').map(w=>`<span>${w}</span>`).join(' ');const ws=[...eq.children];
-let engVis=1;new IntersectionObserver(e=>engVis=e[0].isIntersecting,{rootMargin:'120px'}).observe(eq);
+let hoff=0,lastScroll=0,engVis=1;new IntersectionObserver(e=>engVis=e[0].isIntersecting,{rootMargin:'120px'}).observe(eq);
 const onS=()=>{$('#hd').classList.toggle('s',scrollY>40);$('#pg').style.transform='scaleX('+scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)+')';
+ const hh=innerHeight;if(!RM&&scrollY<hh*1.1)$('#hero').style.setProperty('--hp',Math.min(1,scrollY/hh).toFixed(3));
+ const off=scrollY>hh*1.05;if(off!==hoff){hoff=off;document.body.classList.toggle('ho',off);document.querySelectorAll('.col video').forEach(v=>{if(off)v.pause();else if(!cur&&v.src)v.play().catch(()=>{})})}
  if(!engVis)return;const r=eq.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.9-r.top)/(r.height+innerHeight*.35)));ws.forEach((w,i)=>w.classList.toggle('on',i<p*ws.length+.5))};
-let tk=0;addEventListener('scroll',()=>{if(!tk){tk=1;requestAnimationFrame(()=>{tk=0;onS()})}},{passive:true});onS();
+let tk=0;addEventListener('scroll',()=>{lastScroll=Date.now();if(!tk){tk=1;requestAnimationFrame(()=>{tk=0;onS()})}},{passive:true});onS();
 
 // J'aime + avis (enregistrés dans le navigateur du visiteur : voir note de livraison)
 const LS={get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
@@ -378,7 +387,7 @@ function show(dir){clear();const it=list()[idx],w=E('div','it '+(dir<0?'d':'u'))
  $('#cnt').textContent=String(idx+1).padStart(2,'0')+' / '+String(list().length).padStart(2,'0');
  likeUI(it);$('#id').textContent=cur.t;$('#it').textContent=it.title;$('#ix').textContent=it.desc||'';
  history.replaceState(null,'','#'+slug(cur,it));
- const n=list()[idx+1];if(n&&n.type!=='yt')new Image().src=n.type==='img'?P+n.src+'.webp':P+n.src+'-poster.webp'}
+ const n=list()[idx+1];if(n&&n.type!=='yt')new Image().src=n.type==='img'?P+'t/'+n.src+'.webp':P+n.src+'-poster.webp'}
 function go(d){const n=idx+d;if(n<0||n>=list().length)return false;idx=n;tipDone=1;tip.classList.remove('sh');show(d);return true}
 function close(){document.body.classList.remove('lbo');document.querySelectorAll('.col video').forEach(v=>v.play().catch(()=>{}));clear();tip.classList.remove('sh');lb.classList.remove('on');setTimeout(()=>{lb.hidden=true},350);document.querySelectorAll('body>:not(#lb)').forEach(e=>e.inert=false);document.body.style.overflow='';history.replaceState(null,'',location.pathname+location.search);cur=null;trig&&trig.focus()}
 $('.x',lb).onclick=close;$('#ic').onclick=()=>close();lb.querySelectorAll('.nv button').forEach(b=>b.onclick=()=>go(+b.dataset.d));
