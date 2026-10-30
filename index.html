@@ -51,7 +51,7 @@ nav ul{display:flex;gap:30px;list-style:none;padding:0}nav a{text-decoration:non
 .g{display:flex;flex-direction:column;gap:14px;padding-bottom:14px}
 .col img,.col video{width:100%;object-fit:cover;border-radius:10px;background:var(--plum)}
 @media(max-width:760px){.col:nth-child(n+4){display:none}}
-#hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(21,12,20,.94),rgba(21,12,20,.55) 62%,rgba(21,12,20,.2)),linear-gradient(0deg,var(--ink) 4%,transparent 40%)}
+#hero:before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 75% 70% at 25% 68%,rgba(21,12,20,.8),rgba(21,12,20,.38) 58%,transparent 85%),linear-gradient(0deg,var(--ink) 2%,transparent 38%),linear-gradient(180deg,rgba(21,12,20,.55),transparent 22%)}
 #hero .wrap{position:relative;z-index:2;padding:130px 0 clamp(30px,6vh,60px)}
 #hero h1{font-size:clamp(2.6rem,8.4vw,6.4rem);max-width:13ch;line-height:1.14}
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}.w>span{display:inline-block;transform:translateY(110%);animation:up 1s var(--ez) forwards;animation-delay:calc(var(--i)*.12s + .3s)}
@@ -105,8 +105,8 @@ footer{background:var(--ink);padding:44px 0;color:var(--mut);font-size:.9rem}foo
 #tip i{width:26px;height:26px;border-left:4px solid var(--gold);border-top:4px solid var(--gold);transform:rotate(45deg);animation:sw 1.3s var(--ez) infinite}@keyframes sw{0%{transform:translateY(22px) rotate(45deg);opacity:0}50%{opacity:1}100%{transform:translateY(-14px) rotate(45deg);opacity:0}}
 .wrap{position:relative;z-index:1}.rain{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;--H:900px}
 .fl{position:absolute;top:0;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:0;animation:fall linear infinite}.fl.f{fill:currentColor;stroke:none}.rain.off .fl{animation-play-state:paused}
-@keyframes fall{0%{transform:translate3d(0,-80px,0) rotate(0);opacity:0}10%{opacity:var(--o,.24)}90%{opacity:var(--o,.24)}100%{transform:translate3d(var(--sw),var(--H),0) rotate(var(--r));opacity:0}}
-.dom .rain{--o:.12}
+@keyframes fall{0%{transform:translate3d(0,-80px,0) rotate(0);opacity:0}10%{opacity:var(--o,.2)}90%{opacity:var(--o,.2)}100%{transform:translate3d(var(--sw),var(--H),0) rotate(var(--r));opacity:0}}
+.dom .rain{--o:.1}
 .rv{opacity:0;transform:translateY(40px);transition:1s var(--ez)}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rain{display:none}*,:before,:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv,.w>span,#hero p.lead,.cta{opacity:1;transform:none}#engq span{opacity:1}}
 
@@ -129,6 +129,8 @@ body.lbo .col,body.lbo .fl,body.lbo .mq div,body.lbo:after{animation-play-state:
 #lb{backdrop-filter:none;background:rgba(14,7,13,.96)}
 @media(max-width:800px){body:after{display:none}}
 #hero h1{line-height:1.12}.w{padding-bottom:.12em}#apropos h2{line-height:1.3}
+#hero h1,#hero .lead,#hero .ey{text-shadow:0 2px 22px rgba(10,5,10,.55),0 1px 3px rgba(10,5,10,.35)}
+@media(max-width:760px){#hero:before{background:radial-gradient(ellipse 130% 55% at 50% 72%,rgba(21,12,20,.82),rgba(21,12,20,.4) 62%,transparent 90%),linear-gradient(0deg,var(--ink) 2%,transparent 38%),linear-gradient(180deg,rgba(21,12,20,.55),transparent 22%)}}
 </style>
 </head>
 <body>
@@ -144,6 +146,12 @@ body.lbo .col,body.lbo .fl,body.lbo .mq div,body.lbo:after{animation-play-state:
 <symbol id="s-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 14a5 5 0 009 0M9 9.5v.5M15 9.5v.5"/></symbol>
 <symbol id="s-frame" viewBox="0 0 24 24"><rect x="4" y="2.5" width="16" height="19" rx="1.5"/><path d="M4 7h16M4 17h16M8 2.5V7M16 2.5V7M8 17v4.5M16 17v4.5"/></symbol>
 <symbol id="s-spark" viewBox="0 0 24 24"><path d="M12 1c.9 6 2.8 9.2 9 11-6.2 1.8-8.1 5-9 11-.9-6-2.8-9.2-9-11 6.2-1.8 8.1-5 9-11z"/></symbol>
+<symbol id="s-headphones" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0116 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/></symbol>
+<symbol id="s-wave" viewBox="0 0 24 24"><path d="M3 12v0M6.5 8v8M10 4v16M13.5 7v10M17 9.5v5M20.5 11v2"/></symbol>
+<symbol id="s-photo" viewBox="0 0 24 24"><path d="M3.5 8h3.5l1.5-2.5h7L17 8h3.5v11h-17z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+<symbol id="s-pixel" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6"/><rect x="15" y="3" width="6" height="6"/><rect x="9" y="9" width="6" height="6"/><rect x="3" y="15" width="6" height="6"/><rect x="15" y="15" width="6" height="6"/></symbol>
+<symbol id="s-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M3 17l5-4.5 4 3.5 3-2.5 6 4.5"/></symbol>
+<symbol id="s-pen" viewBox="0 0 24 24"><path d="M12 2l6 8-3 5H9l-3-5z"/><path d="M12 15v6"/><circle cx="12" cy="11" r="1.4"/></symbol>
 </defs></svg>
 <div id="pg"></div><a class="skip" href="#app">Aller au contenu</a>
 <header id="hd"><div class="wrap">
@@ -179,13 +187,13 @@ body.lbo .col,body.lbo .fl,body.lbo .mq div,body.lbo:after{animation-play-state:
 <button class="btn p" type="submit">Publier mon avis</button><p id="rok" role="status"></p></form></div></section>
 
 <section id="contact"><div class="rain"></div><div class="wrap ct"><div class="rv"><p class="ey">Contact</p><h2>Parlons de votre projet.</h2>
-<a class="big" id="cph" href="tel:+2290161151555">+229 01 61 15 15 55</a><div class="bs"><a class="btn p" id="cca" href="tel:+2290161151555">Appeler</a><a class="btn" id="cwa" href="https://wa.me/2290161151555" target="_blank" rel="noopener">WhatsApp</a><a class="btn" id="cmb" href="mailto:kikocreart@gmail.com">E-mail</a></div><div id="csoc" class="soc"></div></div>
+<a class="big" id="cph" href="tel:+2290161151555">+229 01 61 15 15 55</a><div class="bs"><a class="btn p" id="cca" href="tel:+2290161151555">Appeler</a><a class="btn" id="cwa" href="https://wa.me/2290161151555" target="_blank" rel="noopener">WhatsApp</a><a class="btn" id="cmb" href="mailto:kikocreart@gmail.com">E-mail</a></div></div>
 <form id="fm" class="rv"><label>Votre nom<input name="n" required autocomplete="name"></label>
 <label>Votre e-mail ou téléphone<input name="c" required autocomplete="email"></label>
 <label>Votre projet<textarea name="m" required></textarea></label>
 <button class="btn p" type="submit">Envoyer sur WhatsApp</button></form></div></section>
 </main>
-<footer><div class="wrap"><img src="assets/img/kiko-creart-original-blanc.webp" alt="Kiko Cré'art" loading="lazy"><span>© <span id="yr"></span> Kiko Cré'art · Chaque projet est une histoire à raconter.</span><div class="fs"><div class="soc" id="fsoc" style="margin:0"></div></div><a class="btn p" id="fe" href="mailto:kikocreart@gmail.com">kikocreart@gmail.com</a></div></footer>
+<footer><div class="wrap"><img src="assets/img/kiko-creart-original-blanc.webp" alt="Kiko Cré'art" loading="lazy"><span>© <span id="yr"></span> Kiko Cré'art · Chaque projet est une histoire à raconter.</span><a class="btn p" id="fe" href="mailto:kikocreart@gmail.com">kikocreart@gmail.com</a></div></footer>
 
 <div id="lb" role="dialog" aria-modal="true" aria-label="Lecteur de créations" hidden>
 <div id="st"></div><span id="cnt"></span><button class="x" aria-label="Fermer (Échap)">✕</button>
@@ -204,9 +212,8 @@ const CONFIG={
  likesBase:1000, // valeur de référence : chaque photo/vidéo reçoit un nombre différent (entre 75 % et 150 % de cette valeur)
  ratingBase:{score:4.9,count:15}, // avis déjà reçus dont les commentaires ne sont pas encore ajoutés. Quand vous ajoutez des commentaires dans reviews, baissez count d'autant
  reviews:[], // vrais avis à afficher d'office : {n:'Nom',s:5,t:'Texte',d:'12/10/2026'}
- facebook:'https://www.facebook.com/share/1LWPQDMPuC/', tiktok:'https://www.tiktok.com/@kiko.creart', youtube:'https://www.youtube.com/@kikocreart', instagram:'https://www.instagram.com/kikocreart.61151555' // ← liens des PROFILS (vide = non affiché)
 };
-const DIMS={"carousel-1-01": [1024, 1280], "carousel-1-02": [1024, 1280], "carousel-1-03": [1024, 1280], "carousel-1-04": [1024, 1280], "carousel-1-05": [1024, 1280], "carousel-1-06": [1024, 1280], "certification-eig-2026-1": [1280, 867], "certification-eig-2026-2": [1280, 853], "comedie-club-uspo-26-2": [1041, 1280], "comedie-club-uspo-26-4": [1067, 1280], "eig-booster-2025": [1280, 853], "elles-s-autonomise-lancement-3": [989, 1280], "elles-s-autonomise-lancement-5": [989, 1280], "elles-s-autonomise-lancement-6": [1280, 989], "elles-s-autonomise-lancement": [989, 1280], "enfant-en-cuisine-2-1": [853, 1280], "final-uspo-26-1": [946, 1280], "final-uspo-26-2": [1058, 1280], "final-uspo-26-3-avec-hermano-premier-et-belronde": [1280, 1061], "forum-demergence-des-jeunes": [1254, 1254], "kiko-a1": [809, 1080], "kiko-a2": [727, 1280], "kiko-a3": [727, 1280], "master-class-uspo-26-1": [1004, 1080], "master-class-uspo-26-2": [1080, 719], "master-class-uspo-26-3": [1080, 696], "master-class-uspo-26-5": [1080, 719], "petit-dejeuner-des-hommes-d-affaires-du-plein-evangile-2025-1": [853, 1280], "petit-dejeuner-des-hommes-d-affaires-du-plein-evangile-2025-2": [853, 1280], "port-de-peche-de-cotonou-1": [1280, 853], "port-de-peche-de-cotonou-2": [1280, 853], "sommet-de-la-jeunesse-2026-1": [1280, 853], "sommet-de-la-jeunesse-2026-10": [1280, 767], "sommet-de-la-jeunesse-2026-2": [1280, 853], "sommet-de-la-jeunesse-2026-5": [1280, 853], "sommet-de-la-jeunesse-2026-6": [1280, 853], "sommet-de-la-jeunesse-2026-8": [853, 1280], "sortie-de-residence-trinovart-creatif-2026-1": [1280, 960], "sortie-de-residence-trinovart-creatif-2026-3": [1280, 960], "elles-autonomisent": [1280, 720], "enfant-en-cuisine-4-lancement": [540, 960], "enfant-en-cuisine-4-visite-sitatunga": [540, 960], "extra-delices-temoignage": [540, 960], "oasis-t-1": [540, 960], "oasis-t-2": [540, 960], "presentation-carte-son": [540, 960]};
+const DIMS={"carousel-1-01": [1024, 1280], "carousel-1-02": [1024, 1280], "carousel-1-03": [1024, 1280], "carousel-1-04": [1024, 1280], "carousel-1-05": [1024, 1280], "carousel-1-06": [1024, 1280], "certification-eig-2026-1": [1280, 867], "certification-eig-2026-2": [1280, 853], "comedie-club-uspo-26-2": [1041, 1280], "comedie-club-uspo-26-4": [1067, 1280], "eig-booster-2025": [1280, 853], "elles-s-autonomise-lancement-3": [989, 1280], "elles-s-autonomise-lancement-5": [989, 1280], "elles-s-autonomise-lancement-6": [1280, 989], "elles-s-autonomise-lancement": [989, 1280], "enfant-en-cuisine-2-1": [853, 1280], "final-uspo-26-1": [946, 1280], "final-uspo-26-2": [1058, 1280], "final-uspo-26-3-avec-hermano-premier-et-belronde": [1280, 1061], "kiko-en-action": [1254, 1254], "kiko-a1": [809, 1080], "kiko-a2": [727, 1280], "kiko-a3": [727, 1280], "master-class-uspo-26-1": [1004, 1080], "master-class-uspo-26-2": [1080, 719], "master-class-uspo-26-3": [1080, 696], "master-class-uspo-26-5": [1080, 719], "petit-dejeuner-des-hommes-d-affaires-du-plein-evangile-2025-1": [853, 1280], "petit-dejeuner-des-hommes-d-affaires-du-plein-evangile-2025-2": [853, 1280], "port-de-peche-de-cotonou-1": [1280, 853], "port-de-peche-de-cotonou-2": [1280, 853], "sommet-de-la-jeunesse-2026-1": [1280, 853], "sommet-de-la-jeunesse-2026-10": [1280, 767], "sommet-de-la-jeunesse-2026-2": [1280, 853], "sommet-de-la-jeunesse-2026-5": [1280, 853], "sommet-de-la-jeunesse-2026-6": [1280, 853], "sommet-de-la-jeunesse-2026-8": [853, 1280], "sortie-de-residence-trinovart-creatif-2026-1": [1280, 960], "sortie-de-residence-trinovart-creatif-2026-3": [1280, 960], "elles-autonomisent": [1280, 720], "enfant-en-cuisine-4-lancement": [540, 960], "enfant-en-cuisine-4-visite-sitatunga": [540, 960], "extra-delices-temoignage": [540, 960], "oasis-t-1": [540, 960], "oasis-t-2": [540, 960], "presentation-carte-son": [540, 960]};
 const P='assets/img/', V='assets/video/';
 const I=(f,t,d)=>({id:f,type:'img',src:f,title:t,desc:d||''});
 const M=(f,t,dur,d,hls)=>({id:f,type:'mp4',src:f,title:t,dur,desc:d||'',hls:!!hls}); // 5e argument = 1 : lecture adaptative (HLS) dans assets/video/hls/
@@ -228,7 +235,7 @@ const DOMAINS=[
  ...G('Certification EIG 2026',['certification-eig-2026-1','certification-eig-2026-2']),
  ...G('Petit-déjeuner des hommes d\'affaires du Plein Évangile 2025',['petit-dejeuner-des-hommes-d-affaires-du-plein-evangile-2025-1','petit-dejeuner-des-hommes-d-affaires-du-plein-evangile-2025-2']),
  ...G('Port de pêche de Cotonou',['port-de-peche-de-cotonou-1','port-de-peche-de-cotonou-2']),
- I('forum-demergence-des-jeunes','Forum d\'émergence des jeunes')]},
+ I('kiko-en-action','Kiko en action')]},
 {id:'graphique',c:'#2fb8a6',t:'Création graphique et identité visuelle',line:'Affiches, visuels réseaux sociaux et supports de communication.',
  items:[1,2,3,4,5,6].map(n=>I('carousel-1-0'+n,'Carrousel réseaux sociaux · '+n)).concat([I('eig-booster-2025','EIG Booster 2025'),I('enfant-en-cuisine-2-1','Enfant en cuisine')])},
 {id:'communication',c:'#f06a8d',t:'Communication et promotion',line:'Mise en lumière des PME, des produits, des services et des événements.',
@@ -243,7 +250,7 @@ const DOMAINS=[
  M('soiree-yalogbe','2ème soirée Yalogbé','2:01','',1),M('iya-alatche-26-mars-2026','Iya Alatche · 26 mars 2026','3:11','',1),M('mao-code','MAO CODE','1:14','',1),M('sortie-de-residence','Sortie de résidence','4:07','',1)]}
 ];
 // Collage du hero : images (nom) et extraits vidéo (V:nom). 20 éléments répartis sur 5 colonnes
-const HERO=['sommet-de-la-jeunesse-2026-1','V:hero-a','carousel-1-03','master-class-uspo-26-1','elles-s-autonomise-lancement','final-uspo-26-1','port-de-peche-de-cotonou-1','V:hero-b','comedie-club-uspo-26-4','enfant-en-cuisine-2-1','certification-eig-2026-1','sommet-de-la-jeunesse-2026-8','V:hero-c','carousel-1-01','petit-dejeuner-des-hommes-d-affaires-du-plein-evangile-2025-1','eig-booster-2025','sortie-de-residence-trinovart-creatif-2026-1','forum-demergence-des-jeunes','carousel-1-05','sommet-de-la-jeunesse-2026-2'];
+const HERO=['sommet-de-la-jeunesse-2026-1','V:hero-a','carousel-1-03','master-class-uspo-26-1','elles-s-autonomise-lancement','final-uspo-26-1','port-de-peche-de-cotonou-1','V:hero-b','comedie-club-uspo-26-4','enfant-en-cuisine-2-1','certification-eig-2026-1','sommet-de-la-jeunesse-2026-8','V:hero-c','carousel-1-01','petit-dejeuner-des-hommes-d-affaires-du-plein-evangile-2025-1','eig-booster-2025','sortie-de-residence-trinovart-creatif-2026-1','kiko-en-action','carousel-1-05','sommet-de-la-jeunesse-2026-2'];
 const MARQUEE=['Production audiovisuelle','Reportage','Identité visuelle','Communication','Contenus digitaux'];
 /* ============ FIN DES DONNÉES ============ */
 
@@ -255,13 +262,6 @@ const slug=(d,i)=>'video-'+d.id+'-'+i.id;
 // Contacts
 $('#cph').textContent=CONFIG.phone;$('#cph').href='tel:'+CONFIG.tel;$('#cca').href='tel:'+CONFIG.tel;$('#cmb').href=$('#fe').href='mailto:'+CONFIG.email;$('#fe').textContent=CONFIG.email;
 $('#cwa').href='https://wa.me/'+CONFIG.wa+'?text='+encodeURIComponent('Bonjour Kiko Cré\'art, j\'aimerais parler d\'un projet.');$('#yr').textContent=new Date().getFullYear();
-const SVG={Facebook:'<path class="f" d="M14 8.5V7c0-.8.2-1.2 1.3-1.2H17V3h-2.4C12 3 10.6 4.5 10.6 6.8v1.7H8.5V12h2.1v9H14v-9h2.4l.4-3.5z"/>',
- Instagram:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle class="f" cx="17.3" cy="6.7" r="1.1"/>',
- TikTok:'<path class="f" d="M16.5 3c.3 2.3 1.7 3.8 4 4v3.2c-1.4 0-2.8-.4-4-1.2V15a6 6 0 11-6-6c.3 0 .7 0 1 .1v3.3a2.8 2.8 0 102 2.6V3z"/>',
- YouTube:'<rect x="2" y="5" width="20" height="14" rx="4.5"/><path class="f" d="M10 9.2v5.6l5-2.8z"/>'};
-const NETS=[['Facebook',CONFIG.facebook],['TikTok',CONFIG.tiktok],['YouTube',CONFIG.youtube],['Instagram',CONFIG.instagram]];
-const socHTML=NETS.map(([n,u])=>`<a class="ic${u?'':' off'}" href="${u||'#'}" aria-label="Kiko Cré'art sur ${n}" title="${u?n:n+' · lien à venir'}"${u?' target="_blank" rel="noopener"':' aria-disabled="true"'}><svg viewBox="0 0 24 24" aria-hidden="true">${SVG[n]}</svg></a>`).join('');
-['#csoc','#fsoc'].forEach(s=>{$(s).innerHTML=socHTML});document.querySelectorAll('.soc .off').forEach(a=>a.onclick=e=>e.preventDefault());
 $('#fm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),t="Bonjour Kiko Cré'art,\n\n*Nom :* "+f.get('n')+"\n*Contact :* "+f.get('c')+"\n*Projet :* "+f.get('m'),u='https://wa.me/'+CONFIG.wa+'?text='+encodeURIComponent(t);window.open(u,'_blank','noopener')||(location.href=u)};
 const nv=$('#nv'),mb=$('#mb');mb.onclick=()=>mb.setAttribute('aria-expanded',nv.classList.toggle('o'));nv.onclick=()=>{nv.classList.remove('o');mb.setAttribute('aria-expanded',false)};
 // Hero : titre animé, collage, marquee, timecode
@@ -278,7 +278,7 @@ const box=$('#doms');
 DOMAINS.forEach((d,k)=>{
  const L2=d.items.filter(i=>i.type!=='link'),step=Math.max(1,Math.floor(L2.length/6)),S=L2.filter((_,i)=>i%step===0).slice(0,6),n=S.length;
  const s=E('section','dom');s.id='dom-'+d.id;s.style.setProperty('--c',d.c);
- s.innerHTML=`<div class="rain" data-n="5" data-c="${d.c},#f6efe4"></div><div class="wrap dm"><div class="tx rv"><span class="num">0${k+1}</span><h2>${d.t}</h2><p>${d.line}</p><button class="btn p">Voir les créations (${L2.length})</button></div>
+ s.innerHTML=`<div class="rain" data-n="4" data-c="${d.c},#f6efe4"></div><div class="wrap dm"><div class="tx rv"><span class="num">0${k+1}</span><h2>${d.t}</h2><p>${d.line}</p><button class="btn p">Voir les créations (${L2.length})</button></div>
  <div class="stack vf rv" role="button" tabindex="0" aria-label="Ouvrir les créations : ${d.t}">${S.map(it=>`<span class="sc"><img src="${thumb(it)}" alt="" loading="lazy" decoding="async"${it.type==='mp4'?` data-v="${V+it.src}.mp4" onerror="vf(this)"`:''}>${it.type==='img'?'':'<i class="pl"></i>'}<b>${it.title}</b></span>`).join('')}<span class="hint">Touchez pour voir nos créations</span></div></div>`;
  const st=$('.stack',s),cs=[...st.querySelectorAll('.sc')];let top=0,hov=0,vis=0;
  const lay=()=>cs.forEach((c,j)=>{const q=(j-top+n)%n;c.style.setProperty('--p',q);c.classList.toggle('h',q>3)});lay();
@@ -289,9 +289,9 @@ DOMAINS.forEach((d,k)=>{
  if(!RM&&n>1)setInterval(()=>{if(vis&&!hov&&!cur){top=(top+1)%n;lay()}},3200);
  box.append(s)});
 // Pluie d'éléments (cinéma, son, joie) : icônes SVG qui tombent doucement
-const IC=['play','cam','mic','clap','note','chat','star','heart','smile','frame','spark'],FL=['play','star','heart','spark'],rn=[...document.querySelectorAll('.rain')];
+const IC=['play','cam','mic','clap','note','headphones','wave','photo','pixel','image','pen','chat','frame','spark','star','heart'],FL=['play','star','heart','spark','pixel'],rn=[...document.querySelectorAll('.rain')];
 const sizeRain=()=>rn.forEach(b=>b.style.setProperty('--H',b.offsetHeight+100+'px'));
-rn.forEach(b=>{const cols=(b.dataset.c||'#fbb02e,#ff5a3c,#2fb8a6,#f06a8d').split(','),n=+b.dataset.n||(innerWidth<700?6:10);let o='';
+rn.forEach(b=>{const cols=(b.dataset.c||'#fbb02e,#ff5a3c,#2fb8a6,#f06a8d').split(','),n=+b.dataset.n||(innerWidth<700?5:8);let o='';
  for(let i=0;i<n;i++){const ic=IC[(i*5+rn.indexOf(b)*3)%IC.length],r=Math.random,sz=18+r()*18;
   o+=`<svg class="fl${FL.includes(ic)?' f':''}" viewBox="0 0 24 24" style="left:${(i+r()*.8)/n*100}%;width:${sz}px;height:${sz}px;color:${cols[i%cols.length]};animation-duration:${22+r()*18}s;animation-delay:-${r()*30}s;--sw:${(r()-.5)*120}px;--r:${(r()-.5)*480}deg"><use href="#s-${ic}"/></svg>`}
  b.innerHTML=o;new IntersectionObserver(e=>b.classList.toggle('off',!e[0].isIntersecting)).observe(b)});
@@ -319,7 +319,7 @@ function renderRev(){const a=[...LS.get('kiko_reviews',[]),...CONFIG.reviews],B=
  const c=$('#rcar');c.textContent='';(a.length?a:[{n:'Bientôt',s:0,t:'Les commentaires de nos clients seront publiés ici très prochainement. Vous pouvez déjà laisser le vôtre ci-dessous.',d:''}]).forEach(r=>{const e=E('article','rc',stars(r.s)),p=E('p'),f=E('div','rf2'),b=E('b'),d=E('span');p.textContent=r.t;b.textContent=r.n;d.textContent=r.d;f.append(b,d);e.append(p,f);c.append(e)})}
 let rate=0;const rb=[...document.querySelectorAll('#rst button')],paint=v=>rb.forEach((b,i)=>b.classList.toggle('on',i<v));
 rb.forEach((b,i)=>{b.onclick=()=>{rate=i+1;paint(rate);rb.forEach((x,j)=>x.setAttribute('aria-checked',j===i))};b.onmouseenter=()=>paint(i+1);b.onmouseleave=()=>paint(rate)});
-$('#rf').onsubmit=e=>{e.preventDefault();if(!rate){$('#rok').textContent='Choisissez une note de 1 à 5 étoiles.';return}const f=new FormData(e.target),a=LS.get('kiko_reviews',[]);a.unshift({n:f.get('n').trim().slice(0,40),s:rate,t:f.get('t').trim().slice(0,400),d:new Date().toLocaleDateString('fr-FR')});LS.set('kiko_reviews',a);renderRev();e.target.reset();rate=0;paint(0);rb.forEach(x=>x.setAttribute('aria-checked',false));$('#rok').textContent='Merci ! Votre avis est publié.';$('#rcar').scrollTo({left:0,behavior:'smooth'})};
+$('#rf').onsubmit=e=>{e.preventDefault();if(!rate){$('#rok').textContent='Choisissez une note de 1 à 5 étoiles.';return}const f=new FormData(e.target),a=LS.get('kiko_reviews',[]);a.unshift({n:f.get('n').trim().slice(0,40),s:rate,t:f.get('t').trim().slice(0,400),d:new Date().toLocaleDateString('fr-FR')});LS.set('kiko_reviews',a);renderRev();e.target.reset();rate=0;paint(0);rb.forEach(x=>x.setAttribute('aria-checked',false));$('#rok').textContent='Merci pour votre avis !';$('#rcar').scrollTo({left:0,behavior:'smooth'})};
 renderRev();
 
 /* ============ LECTEUR IMMERSIF ============ */
