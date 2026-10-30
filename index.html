@@ -165,6 +165,7 @@ footer{position:relative;z-index:1}
 #hero .wrap{transform:translate3d(0,calc(var(--hp,0)*-8vh),0);opacity:calc(1 - var(--hp,0)*.9);will-change:transform,opacity}
 .sc{box-shadow:0 16px 28px -16px rgba(0,0,0,.65);transition:transform .9s var(--ez),opacity .6s,visibility 0s}
 .sc.h{visibility:hidden;transition:transform .9s var(--ez),opacity .6s,visibility 0s linear .9s}
+.rv{transform:none!important;transition:opacity .45s ease}
 </style>
 </head>
 <body>
@@ -204,7 +205,7 @@ footer{position:relative;z-index:1}
 <div class="mq" aria-hidden="true"><div id="mq"></div></div></section>
 
 <section id="apropos"><div class="rain" data-c="#d9731a,#c43a1d,#1c8f80,#d4486f"></div><div class="wrap about"><div class="rv"><p class="ey">À propos</p><h2>Une structure créative, des projets qui ont une <span style="color:#a8480f">âme</span>.</h2>
-<p>Kiko Cré'art accompagne marques, entreprises, événements et initiatives. Nous transformons <b>vos idées, vos activités et vos ambitions</b> en contenus créatifs, professionnels et impactants.</p></div>
+<p>Kiko Cré'art est une structure créative qui donne de la visibilité aux marques, aux entreprises, aux événements et aux initiatives : nous transformons <b>vos idées, vos activités et vos ambitions</b> en contenus créatifs, professionnels et impactants.</p></div>
 <div class="ph vf rv"><img src="assets/img/kiko-a1.webp" alt="Kiko Cré'art" loading="lazy" width="809" height="1080"></div></div></section>
 
 <section id="savoir"><div class="rain"></div><div class="wrap"><p class="ey">Nos services</p><h2 class="rv">Cinq métiers, une même exigence.</h2><div class="rows" id="sf"><a class="row" href="#dom-audiovisuel"><b>01</b><h3>Production audiovisuelle</h3><span>Films, vlogs, capsules et storytelling visuel.</span><i>→</i></a><a class="row" href="#dom-reportage"><b>02</b><h3>Reportage et couverture médiatique</h3><span>Événements, conférences, cérémonies et toute initiative.</span><i>→</i></a><a class="row" href="#dom-graphique"><b>03</b><h3>Création graphique et identité visuelle</h3><span>Affiches, visuels réseaux sociaux et supports de communication.</span><i>→</i></a><a class="row" href="#dom-communication"><b>04</b><h3>Communication et promotion</h3><span>Mise en lumière des PME, des produits, des services et des événements.</span><i>→</i></a><a class="row" href="#dom-contenus"><b>05</b><h3>Contenus médiatiques et digitaux</h3><span>Voix off, podcasts, scripts et contenus pour le numérique.</span><i>→</i></a></div></div></section>
@@ -215,14 +216,14 @@ footer{position:relative;z-index:1}
 
 <section id="avis"><div class="rain"></div><div class="wrap"><div class="hd rv"><div><p class="ey">Avis</p><h2>Vos avis comptent.</h2></div><div id="rav"></div></div>
 <div class="rcar" id="rcar" aria-live="polite"></div>
-<form id="rf" class="rv"><label>Votre nom<input name="n" required maxlength="40" autocomplete="name"></label>
+<form id="rf"><label>Votre nom<input name="n" required maxlength="40" autocomplete="name"></label>
 <div><label id="rl">Votre note</label><div id="rst" role="radiogroup" aria-labelledby="rl"><button type="button" role="radio" aria-checked="false" aria-label="1 étoile"><svg viewBox="0 0 24 24"><use href="#s-star"/></svg></button><button type="button" role="radio" aria-checked="false" aria-label="2 étoiles"><svg viewBox="0 0 24 24"><use href="#s-star"/></svg></button><button type="button" role="radio" aria-checked="false" aria-label="3 étoiles"><svg viewBox="0 0 24 24"><use href="#s-star"/></svg></button><button type="button" role="radio" aria-checked="false" aria-label="4 étoiles"><svg viewBox="0 0 24 24"><use href="#s-star"/></svg></button><button type="button" role="radio" aria-checked="false" aria-label="5 étoiles"><svg viewBox="0 0 24 24"><use href="#s-star"/></svg></button></div></div>
 <label>Votre avis<textarea name="t" required maxlength="400"></textarea></label>
 <button class="btn p" type="submit">Publier mon avis</button><p id="rok" role="status"></p></form></div></section>
 
-<section id="contact"><div class="rain"></div><div class="wrap ct"><div class="rv"><p class="ey">Contact</p><h2>Parlons de votre projet.</h2>
+<section id="contact"><div class="rain"></div><div class="wrap ct"><div><p class="ey">Contact</p><h2>Parlons de votre projet.</h2>
 <a class="big" id="cph" href="tel:+2290161151555">+229 01 61 15 15 55</a><div class="bs"><a class="btn p" id="cca" href="tel:+2290161151555">Appeler</a><a class="btn" id="cwa" href="https://wa.me/2290161151555" target="_blank" rel="noopener">WhatsApp</a><a class="btn" id="cmb" href="mailto:kikocreart@gmail.com">E-mail</a></div></div>
-<form id="fm" class="rv"><label>Votre nom<input name="n" required autocomplete="name"></label>
+<form id="fm"><label>Votre nom<input name="n" required autocomplete="name"></label>
 <label>Votre e-mail ou téléphone<input name="c" required autocomplete="email"></label>
 <label>Votre projet<textarea name="m" required></textarea></label>
 <button class="btn p" type="submit">Envoyer sur WhatsApp</button></form></div></section>
@@ -305,14 +306,14 @@ $('#mq').innerHTML=(MARQUEE.map(m=>`<span>${m}</span>`).join('')).repeat(4);
 if(!RM){addEventListener('load',()=>document.querySelectorAll('.col video').forEach(v=>{const c=navigator.connection;if(innerWidth<760||(c&&(c.saveData||/2g/.test(c.effectiveType))))return;v.src=v.dataset.s;v.play().catch(()=>{})}));
  const t0=Date.now(),tc=$('#tc'),p=n=>String(n).padStart(2,'0');setInterval(()=>{const t=Date.now()-t0,f=Math.floor(t%1000/40);tc.textContent='REC '+p(Math.floor(t/36e5))+':'+p(Math.floor(t/6e4)%60)+':'+p(Math.floor(t/1e3)%60)+':'+p(f)},80)}
 // Savoir-faire
-$('#sf').innerHTML=DOMAINS.map((d,k)=>`<a class="row rv" href="#dom-${d.id}"><b>0${k+1}</b><h3>${d.t}</h3><span>${d.line}</span><i>→</i></a>`).join('');
+$('#sf').innerHTML=DOMAINS.map((d,k)=>`<a class="row" href="#dom-${d.id}"><b>0${k+1}</b><h3>${d.t}</h3><span>${d.line}</span><i>→</i></a>`).join('');
 // Domaines : pile de cartes superposées
 const box=$('#doms');
 DOMAINS.forEach((d,k)=>{
  const L2=d.items.filter(i=>i.type!=='link'),step=Math.max(1,Math.floor(L2.length/5)),S=L2.filter((_,i)=>i%step===0).slice(0,5),n=S.length;
  const s=E('section','dom');s.id='dom-'+d.id;s.style.setProperty('--c',d.c);
  s.innerHTML=`<div class="rain" data-n="2" data-c="${d.c},#f6efe4"></div><div class="wrap dm"><div class="tx rv"><span class="num">0${k+1}</span><h2>${d.t}</h2><p>${d.line}</p><button class="btn p">Voir les créations (${L2.length})</button></div>
- <div class="stack vf rv" role="button" tabindex="0" aria-label="Ouvrir les créations : ${d.t}">${S.map(it=>`<span class="sc"><img src="${thumb(it)}" alt="" loading="lazy" decoding="async"${it.type==='mp4'?` data-v="${V+it.src}.mp4" onerror="vf(this)"`:''}>${it.type==='img'?'':'<i class="pl"></i>'}<b>${it.title}</b></span>`).join('')}<span class="hint">Touchez pour voir nos créations</span></div></div>`;
+ <div class="stack vf" role="button" tabindex="0" aria-label="Ouvrir les créations : ${d.t}">${S.map(it=>`<span class="sc"><img src="${thumb(it)}" alt="" loading="lazy" decoding="async"${it.type==='mp4'?` data-v="${V+it.src}.mp4" onerror="vf(this)"`:''}>${it.type==='img'?'':'<i class="pl"></i>'}<b>${it.title}</b></span>`).join('')}<span class="hint">Touchez pour voir nos créations</span></div></div>`;
  const st=$('.stack',s),cs=[...st.querySelectorAll('.sc')];let top=0,hov=0,vis=0;
  const lay=()=>cs.forEach((c,j)=>{const q=(j-top+n)%n;c.style.setProperty('--p',q);c.classList.toggle('h',q>3)});lay();
  const op=e=>{e.stopPropagation();openLB(d,d.items.indexOf(S[top]),st)};
